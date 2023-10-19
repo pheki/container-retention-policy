@@ -120,6 +120,7 @@ async def get_all_pages(*, url: str, http_client: AsyncClient) -> list[dict]:
 
     while 'next' in rels:
         response = await http_client.get(rels['next'])
+        print(response)
         response.raise_for_status()
         result.extend(response.json())
 
