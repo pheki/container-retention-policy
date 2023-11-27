@@ -215,6 +215,7 @@ async def delete_package_version(
 ) -> None:
     async with semaphore:
         try:
+            print(f"Will delete using url: {url}")
             response = await http_client.delete(url)
             await wait_for_rate_limit(response=response, eligible_for_secondary_limit=True)
             post_deletion_output(response=response, image_name=image_name, version_id=version_id)
